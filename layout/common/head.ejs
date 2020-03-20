@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-
-    <%- partial('pwa/index') %>
+    <meta charset="utf-8">
     <%
         var title = page.title;
         if (is_archive()) {
@@ -30,16 +28,17 @@
             keywords.push(page.tags.data[i].name);
         }
     %>
-    <meta name="keywords" content="<%= keywords.join(',') %>" />
+        <meta name="keywords" content="<%= keywords.join(',') %>" />
     <% } %>
     <%- open_graph({
         image:          thumbnail(page),
         fb_app_id:      theme.miscellaneous.open_graph.fb_app_id,
         fb_admins:      theme.miscellaneous.open_graph.fb_admins,
         twitter_id:     theme.miscellaneous.open_graph.twitter_id,
+        google_plus:    theme.miscellaneous.open_graph.google_plus,
     }) %>
     <%- meta(page) %>
-
+    <%- autoCanonical(config, page) %>
     <% if (theme.customize && theme.customize.social_links && theme.customize.social_links.rss) { %>
         <link rel="alternate" href="<%- theme.customize.social_links.rss %>" title="<%= config.title %>" type="application/atom+xml" />
     <% } %>
@@ -51,7 +50,9 @@
     <%- css('libs/font-awesome/css/font-awesome.min') %>
     <%- css('libs/titillium-web/styles') %>
     <%- css('libs/source-code-pro/styles') %>
-
+    <link rel="stylesheet" type="text/css" href="">
+    <%- css('https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.css') %>
+    <%- css('https://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css') %>
     <%- css('css/style') %>
 
     <%- js('libs/jquery/3.5.0/jquery.min') %>
