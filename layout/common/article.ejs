@@ -8,10 +8,7 @@
         <% if (!['page','authors','tags','categories'].includes(post.layout)) { %>
             <div class="article-meta">
                 <%- partial('post/date', { class_name: 'article-date', date_format: null }) %>
-                <%- partial('post/author') %>
                 <%- partial('post/tag') %>
-                <%- partial('post/valinecounter') %>
-                <%- partial('post/counter') %>
             </div>
         <% } %>
         <%- partial('post/gallery') %>
@@ -19,12 +16,13 @@
             <%- partial('authors', { post: post }) %>
             <%- partial('tags', { post: post }) %>
             <%- partial('categories', { post: post }) %>
+            <%- partial('ads/adsense_horizontal') %>
             <%- post.content %>
         </div>
+        <%- partial('ads/adsense_rectangle') %>
         <footer class="article-footer">
             <%- partial('share/index', { post: post }) %>
         </footer>
     </div>
-    <%- partial('post/ld_json', { post: post }) %>
 </article>
 <%- partial('comment/index') %>
